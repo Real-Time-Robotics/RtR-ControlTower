@@ -1,0 +1,28 @@
+[   15227ms] [WARNING] Projects fetch timeout/error, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useAppData.js?t=1773025911019:152
+[   15227ms] [WARNING] Issues fetch timeout/error, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useAppData.js?t=1773025911019:212
+[   15229ms] [WARNING] FlightTests fetch timeout, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useV2Data.js?t=1773025911019:224
+[   15229ms] [WARNING] Deliveries fetch timeout, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useV2Data.js?t=1773025911019:311
+[   15229ms] [WARNING] BOM fetch timeout, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useV2Data.js?t=1773025911019:172
+[   15230ms] [WARNING] Orders fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useOrderData.js:91
+[   15230ms] [WARNING] Customers fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useOrderData.js:124
+[   15230ms] [WARNING] Production fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useProductionData.js:66
+[   15231ms] [WARNING] Inventory fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useInventoryData.js:77
+[   15231ms] [WARNING] Transactions fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useInventoryData.js:110
+[   15231ms] [WARNING] Finance summary fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useFinanceData.js:97
+[   15234ms] [WARNING] Invoices fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useFinanceData.js:123
+[   15235ms] [WARNING] Cost entries fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useFinanceData.js:149
+[   15235ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5173/src/contexts/AuthContext.jsx?t=1773025911019:72
+[   15235ms] [WARNING] Projects fetch timeout/error, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useAppData.js?t=1773025911019:152
+[   15246ms] [WARNING] Issues fetch timeout/error, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useAppData.js?t=1773025911019:212
+[   15246ms] [WARNING] FlightTests fetch timeout, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useV2Data.js?t=1773025911019:224
+[   15246ms] [WARNING] Deliveries fetch timeout, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useV2Data.js?t=1773025911019:311
+[   15273ms] [WARNING] BOM fetch timeout, using static fallback: Supabase timeout @ http://localhost:5173/src/hooks/useV2Data.js?t=1773025911019:172
+[   15273ms] [WARNING] Orders fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useOrderData.js:91
+[   15273ms] [WARNING] Customers fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useOrderData.js:124
+[   15273ms] [WARNING] Production fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useProductionData.js:66
+[   15273ms] [WARNING] Inventory fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useInventoryData.js:77
+[   15273ms] [WARNING] Transactions fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useInventoryData.js:110
+[   15280ms] [WARNING] Finance summary fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useFinanceData.js:97
+[   15280ms] [WARNING] Invoices fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useFinanceData.js:123
+[   15280ms] [WARNING] Cost entries fetch timeout: Supabase timeout @ http://localhost:5173/src/hooks/useFinanceData.js:149
+[   15280ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5173/src/contexts/AuthContext.jsx?t=1773025911019:72

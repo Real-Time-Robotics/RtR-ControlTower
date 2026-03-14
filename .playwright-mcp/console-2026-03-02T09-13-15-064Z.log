@@ -1,0 +1,66 @@
+[   10571ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10571ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10572ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10572ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10573ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10573ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10573ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10573ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10574ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10574ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10575ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10575ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10578ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[   10578ms] [WARNING] The width(-1) and height(-1) of chart should be greater than 0,
+       please check the style of container, or the props width(100%) and height(100%),
+       or add a minWidth(0) or minHeight(0) or use aspect(undefined) to control the
+       height and width. @ http://localhost:5175/node_modules/.vite/deps/recharts.js?v=9c75da2a:9073
+[  319973ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5175/src/App.jsx?t=1772443115022:0
+[  319974ms] [ERROR] [vite] Failed to reload /src/App.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5175/@vite/client:808
+[  321783ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5175/src/components/AIRiskPanel.jsx?t=1772443116843:0
+[  321783ms] [ERROR] [vite] Failed to reload /src/components/AIRiskPanel.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5175/@vite/client:808
+[  323696ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5175/src/components/IssueCharts.jsx?t=1772443118757:0
+[  323697ms] [ERROR] [vite] Failed to reload /src/components/IssueCharts.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5175/@vite/client:808
+[  325480ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5175/src/components/GateRadar.jsx?t=1772443120541:0
+[  325480ms] [ERROR] [vite] Failed to reload /src/components/GateRadar.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5175/@vite/client:808
+[  327485ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:5175/src/components/BomModule.jsx?t=1772443122543:0
+[  327485ms] [ERROR] [vite] Failed to reload /src/components/BomModule.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://localhost:5175/@vite/client:808

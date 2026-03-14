@@ -1,0 +1,2 @@
+[   17199ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://ugcjikdlyktrkqgblsrw.supabase.co/rest/v1/audit_log:0
+[   17208ms] [ERROR] Failed to load resource: the server responded with a status of 400 () @ https://ugcjikdlyktrkqgblsrw.supabase.co/rest/v1/notifications?select=*&user_id=eq.usr-001&order=created_at.desc&limit=50:0

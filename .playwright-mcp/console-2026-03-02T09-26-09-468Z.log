@@ -1,0 +1,8 @@
+[    5066ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443564982:72
+[    5067ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443564982:72
+[   55919ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443620136:81
+[   55945ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443620136:81
+[   68562ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443632800:81
+[   68562ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443632800:81
+[   74987ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443639202:81
+[   74996ms] [WARNING] Supabase getSession timed out — falling back to offline mode @ http://localhost:5175/src/contexts/AuthContext.jsx?t=1772443639202:81

@@ -1,0 +1,36 @@
+[    9830ms] [ERROR] React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+
+   Previous render            Next render
+   ------------------------------------------------------
+%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ App 1. useContext                 useContext
+2. useState                   useState
+3. useState                   useState
+4. useState                   useState
+5. useState                   useState
+6. useState                   useState
+7. useState                   useState
+8. useState                   useState
+9. useState                   useState
+10. useState                  useState
+11. useState                  useState
+12. useState                  useState
+13. useState                  useState
+14. undefined                 useEffect
+ @ http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:5591
+[    9839ms] Error: Rendered more hooks than during the previous render.
+    at updateWorkInProgressHook (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:5790:19)
+    at updateEffectImpl (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:6412:20)
+    at Object.useEffect (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:18944:11)
+    at exports.useEffect (http://localhost:5175/node_modules/.vite/deps/chunk-FONOKHZP.js?v=c7a2b680:949:36)
+    at App (http://localhost:5175/src/App.jsx?t=1771900754771:779:3)
+    at Object.react_stack_bottom_frame (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:18507:20)
+    at renderWithHooks (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:5652:24)
+    at updateFunctionComponent (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:7473:21)
+    at beginWork (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:8523:20)
+    at runWithFiberInDEV (http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:995:72)
+[    9834ms] [WARNING] %s
+
+%s
+ An error occurred in the <App> component. Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://react.dev/link/error-boundaries to learn more about error boundaries. @ http://localhost:5175/node_modules/.vite/deps/react-dom_client.js?v=c7a2b680:6963
