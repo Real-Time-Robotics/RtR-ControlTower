@@ -276,19 +276,75 @@ Khi khong ket noi Supabase, ung dung ho tro che do offline voi 4 tai khoan co sa
 
 ---
 
-## 9. Supabase Edge Functions
+## 9. Supabase Edge Functions & Email
+
+### Kich hoat email thong bao (4 buoc)
+
+He thong email da co san code, chi can kich hoat:
+
+**Buoc 1: Dang ky Resend (mien phi 3,000 email/thang)**
+```
+1. Truy cap https://resend.com → Sign up
+2. Them domain rtr.vn (hoac dung domain san cua Resend de test)
+3. Lay API Key tu Dashboard → API Keys
+```
+
+**Buoc 2: Enable extensions trong Supabase Dashboard**
+```
+Supabase Dashboard → Database → Extensions:
+  - Tim "pg_net" → Enable (cho phep goi HTTP tu trigger)
+  - Tim "pg_cron" → Enable (cho phep chay scheduled jobs)
+```
+
+**Buoc 3: Deploy Edge Functions va set secrets**
+```bash
+cd rtr-app
+
+# Deploy functions
+supabase functions deploy send-email
+supabase functions deploy send-digest
+
+# Set secrets
+supabase secrets set RESEND_API_KEY=re_xxxxxxxxxxxx
+supabase secrets set APP_URL=https://rtr-control.vercel.app
+```
+
+**Buoc 4: Chay migration kich hoat trigger**
+```bash
+supabase db push
+# Migration 011_activate_email_dispatch.sql se:
+# - Tao trigger tu dong goi send-email khi co notification moi
+# - Cau hinh pg_cron: kiem tra issues qua han hang ngay 08:00 ICT
+# - Cau hinh pg_cron: gui digest email hang ngay 08:15 ICT
+# - Tu dong don dep notifications cu hon 90 ngay
+```
 
 ### send-email
 
-- **Chuc nang:** Gui email thong bao khi co su kien quan trong (issue moi, thay doi trang thai, phan cong)
-- **Trigger:** Goi tu ung dung hoac database webhook
+- **Chuc nang:** Gui email thong bao realtime khi co su kien quan trong
+- **Trigger:** Tu dong qua pg_net trigger khi INSERT vao bang notifications
+- **Kiem tra:** Tao mot CRITICAL issue → PM/Admin se nhan email trong vai giay
 - **Yeu cau:** Secret `RESEND_API_KEY` da duoc cau hinh
 
 ### send-digest
 
-- **Chuc nang:** Gui email tong hop dinh ky (bao cao hang ngay/tuan)
-- **Trigger:** Supabase Cron hoac goi thu cong
+- **Chuc nang:** Gui email tong hop hang ngay (gom cac thong bao DIGEST)
+- **Trigger:** pg_cron chay tu dong luc 08:15 ICT moi ngay
 - **Yeu cau:** Secret `RESEND_API_KEY` va `APP_URL` da duoc cau hinh
+
+### Cac loai email thong bao
+
+| Su kien | Khi nao | Gui cho ai | Mac dinh |
+|---------|---------|------------|----------|
+| CRITICAL_ISSUE_CREATED | Issue CRITICAL duoc tao | PM + Admin | Realtime |
+| FLIGHT_TEST_FAIL | Bay thu FAIL | Tat ca members | Realtime |
+| CASCADE_DELAY_DETECTED | Delay cascade >= 2 tuan | PM + Admin | Realtime |
+| ISSUE_ASSIGNED | Gan issue cho nguoi moi | Owner moi | Digest |
+| PHASE_TRANSITION | Chuyen phase du an | Tat ca members | Digest |
+| ISSUE_OVERDUE | Issue qua han | Owner | Digest |
+| DRAFT_PENDING_REVIEW | Issue DRAFT cho duyet | PM + Admin | Digest |
+
+> Nguoi dung co the tuy chinh trong Settings → Email Preferences
 
 ### Kiem tra Edge Functions
 
@@ -343,7 +399,51 @@ supabase functions deploy send-digest
 
 ---
 
-## 11. Xu ly su co
+## 11. Production Checklist
+
+### Truoc khi go-live
+
+- [ ] **Database backup**: Supabase Dashboard → Settings → Database → Enable Point-in-Time Recovery
+- [ ] **Email**: Kich hoat theo Section 9 (Resend + pg_net + Edge Functions)
+- [ ] **Domain**: Cau hinh custom domain cho Vercel (vd: control.rtr.vn)
+- [ ] **SSL**: Tu dong qua Vercel / Nginx
+- [ ] **RLS policies**: Kiem tra tat ca tables co RLS enabled (migration 006)
+- [ ] **Environment variables**: Dam bao VITE_SUPABASE_URL va VITE_SUPABASE_ANON_KEY duoc set
+
+### Monitoring
+
+- [ ] **Error tracking**: Cai dat Sentry (mien phi 5K events/thang)
+  ```bash
+  npm install @sentry/react
+  ```
+  Them vao main.jsx:
+  ```javascript
+  import * as Sentry from "@sentry/react";
+  Sentry.init({ dsn: "https://xxx@sentry.io/xxx" });
+  ```
+- [ ] **Supabase monitoring**: Dashboard → Reports → xem query performance
+- [ ] **Uptime**: Dung BetterUptime hoac UptimeRobot (mien phi) de theo doi
+
+### Performance da toi uu
+
+- Code-splitting: 15 lazy-loaded modules
+- Gzip: Main bundle 422KB gzipped
+- Error Boundaries: Moi tab co rieng, crash 1 tab khong anh huong tab khac
+- Realtime: 7 WebSocket subscriptions cho du lieu quan trong
+- Offline fallback: App van hoat dong khi mat mang (read-only)
+
+### Backup strategy
+
+| Muc | Tan suat | Cach thuc |
+|-----|----------|-----------|
+| Database | Lien tuc | Supabase Point-in-Time Recovery (Pro plan) |
+| Database | Hang ngay | Supabase auto backup (Free plan) |
+| Code | Moi commit | Git repository |
+| .env secrets | Mot lan | Luu rieng ngoai repo (1Password / Vault) |
+
+---
+
+## 12. Xu ly su co
 
 ### Supabase cold start (request dau tien cham)
 
