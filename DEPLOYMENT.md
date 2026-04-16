@@ -441,6 +441,23 @@ supabase functions deploy send-digest
 | Code | Moi commit | Git repository |
 | .env secrets | Mot lan | Luu rieng ngoai repo (1Password / Vault) |
 
+### Cron Environment Loading
+
+Since `mrp-sync.mjs` uses fail-fast validation via `requireEnv()`,
+the cron job must have access to environment variables. Standard
+cron does NOT inherit user shell environment.
+
+**Recommended pattern** — load .env explicitly in crontab entry:
+
+    */30 * * * * set -a && . /path/to/.env && node /path/to/sync/mrp-sync.mjs >> /var/log/mrp-sync.log 2>&1
+
+Alternative (if using systemd timer): use `EnvironmentFile=` directive
+pointing to your .env file.
+
+**Verification:** first scheduled run after deploy should either succeed
+or fail with a clear "Missing required env var: X" message in the log.
+Silent failure means cron env is not loaded correctly.
+
 ---
 
 ## 12. Xu ly su co
