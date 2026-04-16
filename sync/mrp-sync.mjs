@@ -7,17 +7,30 @@
 
 import pg from "pg";
 
+// ── Fail-fast env guard ──
+function requireEnv(key) {
+  const value = process.env[key];
+  if (!value || value.trim() === "") {
+    throw new Error(
+      `[mrp-sync] Missing required env var: ${key}. ` +
+      `See .env.example for required variables.`
+    );
+  }
+  return value;
+}
+
 // ── Configuration ──
 const MRP_DB = {
-  host: process.env.MRP_DB_HOST || "localhost",
-  port: parseInt(process.env.MRP_DB_PORT || "5432"),
-  database: process.env.MRP_DB_NAME || "rtr_mrp",
-  user: process.env.MRP_DB_USER || "rtr",
-  password: process.env.MRP_DB_PASSWORD || "rtr_secret_2024",
+  host: requireEnv("MRP_DB_HOST"),
+  // Port 5432 is PostgreSQL standard default — safe fallback OK to keep.
+  port: parseInt(process.env.MRP_DB_PORT || "5432", 10),
+  database: requireEnv("MRP_DB_NAME"),
+  user: requireEnv("MRP_DB_USER"),
+  password: requireEnv("MRP_DB_PASSWORD"),
 };
 
-const SUPABASE_URL = process.env.SUPABASE_URL || "https://supabase.rtrobotics.com";
-const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY || "";
+const SUPABASE_URL = requireEnv("SUPABASE_URL");
+const SUPABASE_KEY = requireEnv("SUPABASE_SERVICE_KEY");
 
 // ── Project name → Control Tower project ID mapping ──
 const PROJECT_MAP = {
