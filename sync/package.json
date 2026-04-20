@@ -4,7 +4,8 @@
   "type": "module",
   "description": "MRP → Control Tower data sync",
   "scripts": {
-    "sync": "node mrp-sync.mjs"
+    "sync": "node mrp-sync.mjs",
+    "healthcheck": "node healthcheck.mjs"
   },
   "dependencies": {
     "pg": "^8.13.0"
