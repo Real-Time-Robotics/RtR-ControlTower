@@ -508,6 +508,128 @@ Silent failure means cron env is not loaded correctly.
 
 ---
 
+## 13. MRP Sync Deployment
+
+`sync/mrp-sync.mjs` dong bo du lieu tu MRP PostgreSQL sang Control Tower Supabase
+(bang `cross_app_data`). Chay moi 30 phut qua cron.
+
+### Yeu cau
+
+- Node.js 20+
+- PostgreSQL client access den MRP database
+- Supabase service role key (KHONG dung anon key)
+
+### Cai dat
+
+```bash
+cd sync
+npm install    # chi can pg
+```
+
+### Bien moi truong
+
+Xem `sync/.env.example`. Tat ca bien la BAT BUOC:
+
+| Bien | Mo ta |
+|------|-------|
+| `MRP_DB_HOST` | Hostname MRP PostgreSQL |
+| `MRP_DB_PORT` | Port (default 5432) |
+| `MRP_DB_NAME` | Database name |
+| `MRP_DB_USER` | Database user |
+| `MRP_DB_PASSWORD` | Database password |
+| `SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_SERVICE_KEY` | Supabase service role key |
+
+### Database setup
+
+Truoc khi chay lan dau, apply migration tao bang monitoring:
+
+```bash
+# Option 1: Supabase CLI
+supabase db push  # neu migration nam trong supabase/migrations/
+
+# Option 2: SQL Editor
+# Copy noi dung sync/migrations/001_sync_runs.sql
+# Paste vao Supabase Dashboard → SQL Editor → Run
+```
+
+### Option 1: Self-hosted server (171.244.40.23)
+
+```bash
+# Crontab entry — chay sync moi 30 phut
+*/30 * * * * set -a && . /path/to/sync/.env && node /path/to/sync/mrp-sync.mjs >> /var/log/mrp-sync.log 2>&1
+
+# Healthcheck moi 15 phut
+*/15 * * * * set -a && . /path/to/sync/.env && node /path/to/sync/healthcheck.mjs >> /var/log/mrp-healthcheck.log 2>&1
+```
+
+### Option 2: Render.com Cron Jobs
+
+Them vao `render.yaml`:
+
+```yaml
+services:
+  - type: cron
+    name: mrp-sync
+    runtime: node
+    schedule: "*/30 * * * *"
+    buildCommand: cd sync && npm install
+    startCommand: cd sync && node mrp-sync.mjs
+    envVars:
+      - key: MRP_DB_HOST
+        sync: false
+      - key: MRP_DB_NAME
+        sync: false
+      - key: MRP_DB_USER
+        sync: false
+      - key: MRP_DB_PASSWORD
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+
+  - type: cron
+    name: mrp-healthcheck
+    runtime: node
+    schedule: "*/15 * * * *"
+    buildCommand: cd sync && npm install
+    startCommand: cd sync && node healthcheck.mjs
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+```
+
+### Monitoring
+
+Kiem tra bang `sync_runs` trong Supabase Dashboard → Table Editor:
+
+```sql
+-- Xem 10 lan sync gan nhat
+SELECT * FROM sync_runs
+WHERE source_app = 'MRP'
+ORDER BY started_at DESC
+LIMIT 10;
+
+-- Xem sync that bai trong 24h
+SELECT * FROM sync_runs
+WHERE source_app = 'MRP'
+  AND status IN ('failed', 'partial')
+  AND started_at > now() - interval '24 hours'
+ORDER BY started_at DESC;
+```
+
+### Xu ly su co
+
+- **Sync failed — PG connect**: Kiem tra MRP database co online khong, firewall, credentials
+- **Sync failed — Supabase upsert**: Kiem tra SUPABASE_SERVICE_KEY hop le, table cross_app_data ton tai
+- **Healthcheck ALERT — stale**: Kiem tra cron dang chay (`crontab -l`), xem log
+- **Healthcheck ALERT — consecutive failures**: Xem `error_message` trong sync_runs de debug
+
+---
+
 ## Lien he ho tro
 
 Neu gap van de khong giai quyet duoc, lien he team phat trien kem theo:
