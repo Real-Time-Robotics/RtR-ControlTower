@@ -1,0 +1,38 @@
+services:
+  - type: cron
+    name: rtr-mrp-sync
+    runtime: node
+    region: singapore
+    schedule: "*/30 * * * *"
+    buildCommand: cd sync && npm install
+    startCommand: cd sync && node mrp-sync.mjs
+    envVars:
+      - key: MRP_DB_HOST
+        sync: false
+      - key: MRP_DB_PORT
+        sync: false
+      - key: MRP_DB_NAME
+        sync: false
+      - key: MRP_DB_USER
+        sync: false
+      - key: MRP_DB_PASSWORD
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+    plan: free
+
+  - type: cron
+    name: rtr-mrp-healthcheck
+    runtime: node
+    region: singapore
+    schedule: "*/15 * * * *"
+    buildCommand: cd sync && npm install
+    startCommand: cd sync && node healthcheck.mjs
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+    plan: free
